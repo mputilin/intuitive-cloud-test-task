@@ -1,0 +1,13 @@
+
+# macOS specific files and directories
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+._*
+.fseventsd/
+.SymAVMetadata/
+.TemporaryItems/
+.apdisk
+
