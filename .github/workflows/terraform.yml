@@ -47,6 +47,10 @@ jobs:
         run: tflint
         working-directory: ./terraform
 
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+        working-directory: ./terraform
+
   apply-on-merge:
     needs: validate-scan
     runs-on: ubuntu-latest
