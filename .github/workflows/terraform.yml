@@ -21,7 +21,7 @@ jobs:
 
       - name: Read Terraform version
         id: tfversion
-        run: echo "::set-env name=TF_VERSION::$(cat ${{ env.TERRAFORM_VERSION_FILE }})"
+        run: echo "TF_VERSION=$(cat ${{ env.TERRAFORM_VERSION_FILE }})" >> $GITHUB_ENV
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
