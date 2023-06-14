@@ -36,26 +36,10 @@ jobs:
         run: terraform validate
         working-directory: ./terraform
 
-  scan:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v1
-
-      - name: Configure AWS credentials
-        run: |
-          mkdir -p ~/.aws
-          echo "[default]" >> ~/.aws/credentials
-          echo "aws_access_key_id=${{ env.AWS_ACCESS_KEY_ID }}" >> ~/.aws/credentials
-          echo "aws_secret_access_key=${{ env.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
-          chmod 600 ~/.aws/credentials
-
       - name: Install TFLint
-        run: curl -L -o /usr/local/bin/tflint https://github.com/terraform-linters/tflint/releases/latest/download/tflint_linux_amd64 && chmod +x /usr/local/bin/tflint
+        run: |
+          curl -L -o /usr/local/bin/tflint https://github.com/terraform-linters/tflint/releases/latest/download/tflint_linux_amd64
+          chmod +x /usr/local/bin/tflint
 
       - name: Run TFLint
         run: tflint
