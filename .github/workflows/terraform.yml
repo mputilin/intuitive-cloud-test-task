@@ -52,6 +52,8 @@ jobs:
         working-directory: ./terraform
         env:
           TF_IN_AUTOMATION: "true"
+          TF_VAR_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
 
       - name: Publish Terraform Plan Artifact
         uses: actions/upload-artifact@v2
