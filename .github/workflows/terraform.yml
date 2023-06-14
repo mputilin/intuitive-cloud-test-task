@@ -30,9 +30,11 @@ jobs:
 
       - name: Initialize Terraform
         run: terraform init
+        working-directory: ./terraform
 
       - name: Validate Terraform code
         run: terraform validate
+        working-directory: ./terraform
 
   scan:
     runs-on: ubuntu-latest
@@ -57,6 +59,7 @@ jobs:
 
       - name: Run TFLint
         run: tflint
+        working-directory: ./terraform
 
   deploy:
     needs: [validate, scan]
@@ -75,5 +78,6 @@ jobs:
         with:
           terraform_version: ${{ steps.tfversion.outputs.version }}
 
-      - name: Apply Terraform changes
-        run: terraform apply -auto-approve
+        working-directory: ./terraform
+
+        working-directory: ./terraform
