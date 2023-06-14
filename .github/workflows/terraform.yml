@@ -68,10 +68,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Read Terraform version
-        id: tfversion
-        run: echo "::set-output name=version::$(cat ${{ env.TERRAFORM_VERSION_FILE }})"        
-
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
         with:
